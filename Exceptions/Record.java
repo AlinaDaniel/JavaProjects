@@ -24,7 +24,9 @@ public class Record {
         this.phoneNumber = "";
         this.name = "";
     }
-
+    public String toString(){
+        return "Запись id-"+id+ " " + name+": "+ phoneNumber;
+    }
     public String getPhoneNumber(){
         return phoneNumber;
     }
@@ -33,8 +35,5 @@ public class Record {
     }
     public long getId(){
         return id;
-    }
-    public void setId(long id){
-        this.id = id;
     }
 }

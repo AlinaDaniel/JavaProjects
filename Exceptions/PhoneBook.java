@@ -15,7 +15,7 @@ public class PhoneBook {
     public void createRecord(Record record) throws PhoneNumberAlreadyExists {
         for (Record rec : records) {
             if (Objects.equals(rec.getPhoneNumber(), record.getPhoneNumber())){
-                throw new PhoneNumberAlreadyExists();
+                throw new PhoneNumberAlreadyExists("В справочнике есть запись с таким же номером телефона");
             }
         }
         records.add(record);
@@ -26,17 +26,20 @@ public class PhoneBook {
         for (Record rec : records) {
             if (rec.getId() == IdOfOldRecord) {
                 existRecord = true;
-                records.remove(record);
-                if (newRecord.getPhoneNumber().equals("") || newRecord.getName().equals("")){
-                    throw new RecordNotValid();
+                if (newRecord.getPhoneNumber().equals("") && newRecord.getName().equals("")){
+                    throw new RecordNotValid("В новой записи не заполнено поле name и поле phoneNumber");
+                } else if (newRecord.getName().equals("")) {
+                    throw new RecordNotValid("В новой записи не заполнено поле name");
+                } else if (newRecord.getPhoneNumber().equals("")) {
+                    throw new RecordNotValid("В новой записи не заполнено поле phoneNumber");
                 }
-                newRecord.setId(IdOfOldRecord);
-                records.add(newRecord);
+                this.deleteRecord(IdOfOldRecord);
+                records.add(new Record(IdOfOldRecord,newRecord.getPhoneNumber(), newRecord.getName()));
                 break;
             }
         }
         if (!existRecord) {
-            throw new RecordNotFound();
+            throw new RecordNotFound("Запись с таким идентификатором не существует");
         }
 
     }
@@ -50,7 +53,7 @@ public class PhoneBook {
             }
         }
         if (!existRecord) {
-            throw new RecordNotFound();
+            throw new RecordNotFound("Подходящая запись в справочнике не найдена");
         }
     }
 }

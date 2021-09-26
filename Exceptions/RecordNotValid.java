@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class RecordNotValid extends Exception {
-    public RecordNotValid(){
-
+    public RecordNotValid(String message){
+        super(message);
     }
 }

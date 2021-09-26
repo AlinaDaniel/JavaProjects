@@ -1,7 +1,7 @@
 package Exceptions;
 
 public class RecordNotFound extends RuntimeException {
-    public RecordNotFound(){
-
+    public RecordNotFound(String message){
+        super(message);
     }
 }
