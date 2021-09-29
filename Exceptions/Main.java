@@ -26,14 +26,12 @@ public class Main {
 //        System.out.println(phoneBook.getAllRecords());
         phoneBook.deleteRecord(133);
         System.out.println(phoneBook.getAllRecords());
-        Record rec1 = new Record(113, "9639630001", "AT");
-        Record rec2 = new Record(100, "9639630555", "AV");
 
         try {
 // вызов непроверяемого исключения
-//            phoneBook.updateRecord(rec1,rec2);
-            Record newRecord = new Record(123);
-            phoneBook.updateRecord(new Record(123, "9639630001", "AD"), newRecord);
+//            phoneBook.updateRecord(new Record(113, "9639630001", "AT"));
+//            phoneBook.updateRecord(new Record(123,"9639630001", "AT"));
+            phoneBook.updateRecord(new Record(123));
         } catch (RecordNotValid e) {
             System.out.println(e.getMessage()+"; данные не будут обновлены");
         }

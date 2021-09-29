@@ -20,11 +20,11 @@ public class PhoneBook {
         }
         records.add(record);
     }
-    public void updateRecord(Record record,Record newRecord) throws RecordNotValid {
+    public void updateRecord(Record newRecord) throws RecordNotValid {
         boolean existRecord = false;
-        long IdOfOldRecord = record.getId();
+        long IdOfRecord = newRecord.getId();
         for (Record rec : records) {
-            if (rec.getId() == IdOfOldRecord) {
+            if (rec.getId() == IdOfRecord) {
                 existRecord = true;
                 if (newRecord.getPhoneNumber().equals("") && newRecord.getName().equals("")){
                     throw new RecordNotValid("В новой записи не заполнено поле name и поле phoneNumber");
@@ -33,8 +33,8 @@ public class PhoneBook {
                 } else if (newRecord.getPhoneNumber().equals("")) {
                     throw new RecordNotValid("В новой записи не заполнено поле phoneNumber");
                 }
-                this.deleteRecord(IdOfOldRecord);
-                records.add(new Record(IdOfOldRecord,newRecord.getPhoneNumber(), newRecord.getName()));
+                this.deleteRecord(IdOfRecord);
+                records.add(newRecord);
                 break;
             }
         }
