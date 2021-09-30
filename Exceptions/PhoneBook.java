@@ -26,11 +26,11 @@ public class PhoneBook {
         for (Record rec : records) {
             if (rec.getId() == IdOfRecord) {
                 existRecord = true;
-                if (newRecord.getPhoneNumber().equals("") && newRecord.getName().equals("")){
+                if ((newRecord.getName() == null || newRecord.getName().isBlank()) && (newRecord.getPhoneNumber() == null || newRecord.getPhoneNumber().isBlank())){
                     throw new RecordNotValid("В новой записи не заполнено поле name и поле phoneNumber");
-                } else if (newRecord.getName().equals("")) {
+                } else if (newRecord.getName() == null || newRecord.getName().isBlank()) {
                     throw new RecordNotValid("В новой записи не заполнено поле name");
-                } else if (newRecord.getPhoneNumber().equals("")) {
+                } else if (newRecord.getPhoneNumber() == null || newRecord.getPhoneNumber().isBlank()) {
                     throw new RecordNotValid("В новой записи не заполнено поле phoneNumber");
                 }
                 this.deleteRecord(IdOfRecord);

@@ -31,7 +31,7 @@ public class Main {
 // вызов непроверяемого исключения
 //            phoneBook.updateRecord(new Record(113, "9639630001", "AT"));
 //            phoneBook.updateRecord(new Record(123,"9639630001", "AT"));
-            phoneBook.updateRecord(new Record(123));
+            phoneBook.updateRecord(new Record(123, null,null));
         } catch (RecordNotValid e) {
             System.out.println(e.getMessage()+"; данные не будут обновлены");
         }
