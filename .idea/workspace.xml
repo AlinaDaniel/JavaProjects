@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f8bc5b7-8e78-47dc-97a4-4aa942c71e48" name="Changes" comment="doone" />
+    <list default="true" id="1f8bc5b7-8e78-47dc-97a4-4aa942c71e48" name="Changes" comment="doone.">
+      <change beforePath="$PROJECT_DIR$/FilesAndPatterns/trash.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632986868625</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="doone.">
+      <created>1634713716592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1634713716592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +123,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="doone" />
-    <option name="LAST_COMMIT_MESSAGE" value="doone" />
+    <MESSAGE value="doone." />
+    <option name="LAST_COMMIT_MESSAGE" value="doone." />
   </component>
 </project>
