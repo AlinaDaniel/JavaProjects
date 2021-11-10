@@ -8,11 +8,11 @@ import org.xml.sax.SAXException;
 
 public class Main {
     public static void main(String[] args) {
-        for (; ;) {
+        for (; ; ) {
             Loader load = new Loader();
             Scanner in = new Scanner(System.in);
             System.out.println("""
-                    
+                                       
                     Введите дату в формате dd/mm/yyyy и идентификатор валюты через запятую,
                     для выхода из программы введите 'EX'
                     """);
@@ -22,7 +22,7 @@ public class Main {
             if (line.equals("EX")) break;
             try {
                 Valute result = load.searchInfo(line);
-                if (result == null){
+                if (result == null) {
                     System.out.println("Данные введены некорректно, пример правильной" +
                             " команды '21/02/2019, USD'\nПопробуйте ещё раз. ");
                 } else {
