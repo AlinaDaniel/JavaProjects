@@ -16,19 +16,23 @@ public class Valute {
     public String getCharCode() {
         return charCode;
     }
+
     public int getNominal() {
         return nominal;
     }
+
     public String getName() {
         return name;
     }
+
     public float getValue() {
         return value;
     }
 
     @Override
     public String toString() {
-        return this.nominal + " " + this.name + " = " + this.value+ " Российских рублей";
+        String str = " RUBLES";
+        return this.nominal + " " + this.name + " = " + this.value + str;
     }
 
 
