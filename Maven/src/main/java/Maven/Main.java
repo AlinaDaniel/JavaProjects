@@ -1,38 +1,53 @@
 package Maven;
+//java -jar mavenProject-1.0-SNAPSHOT-jar-with-dependencies.jar 2020-10-21 AUD
+//java -jar mavenProject-1.0-SNAPSHOT-jar-with-dependencies.jar updateDB 2020-10-21
+//java -jar mavenProject-1.0-SNAPSHOT-jar-with-dependencies.jar 2003-03-02 aud
 
 import java.io.IOException;
-import java.util.Scanner;
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
 
 
 public class Main {
-    public static void main(String[] args) {
-        for (; ;) {
-            Loader load = new Loader();
-            Scanner in = new Scanner(System.in);
-            System.out.println("""
-                    
-                    Введите дату в формате dd/mm/yyyy и идентификатор валюты через запятую,
-                    для выхода из программы введите 'EX'
-                    """);
-            String line = in.nextLine();
-            line = line.toUpperCase();
-            line = line.replaceAll("\\s+", "");
-            if (line.equals("EX")) break;
-            try {
-                Valute result = load.searchInfo(line);
-                if (result == null){
-                    System.out.println("Данные введены некорректно, пример правильной" +
-                            " команды '21/02/2019, USD'\nПопробуйте ещё раз. ");
-                } else {
-                    System.out.println(result);
-                }
-            } catch (ParserConfigurationException | IOException | SAXException e) {
-                e.printStackTrace();
-            }
 
+    public static void main(String[] args) {
+        if (args.length == 2) {
+            args[0] = args[0].toUpperCase();
+            args[1] = args[1].toUpperCase();
+            if (args[0].equals("UPDATEDB")) {
+                try {
+                    DataBaseLoader.addToBase(Loader.convertDate(args[1]));
+                } catch (ParserConfigurationException | IOException | SAXException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                String valuteCode = args[1];
+                String date = Loader.convertDate(args[0]);
+                try {
+                    Valute result = DataBaseLoader.searchInfo(date, valuteCode);
+
+                    if (result == null) {
+                            result = FileLoader.searchInfo(date, valuteCode);
+                        if (result == null) {
+
+                            System.out.println("Not correct. Try again\n" +
+                                    "Example: '2020-09-21 USD' or 'updateDB 2020-09-21'");
+                        } else {
+                            System.out.println(result);
+                        }
+                    } else {
+                        System.out.println(result);
+                    }
+                } catch (ParserConfigurationException | IOException | SAXException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            System.out.println("Not correct. Try again\n" +
+                    "Example: '2020-09-21 USD' or 'updateDB 2020-09-21'");
         }
+
 
     }
 }
